@@ -39,7 +39,7 @@
 </html>
  -->
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Tonle Sap Authority (TSA)</title>
@@ -66,6 +66,7 @@
   </head>
   <body>
     <iframe
+      id="embedded-website"
       src="https://tonlesapinfo.streamlit.app/~/+/"
       frameborder="0"
       marginheight="0"
@@ -75,5 +76,24 @@
       scrolling="auto"
     >
     </iframe>
+
+    <script>
+      window.onload = function() {
+        // Access the iframe content
+        var iframe = document.getElementById('embedded-website');
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        
+        // Find and hide elements with specific IDs or classes
+        var waitingElement = iframeDocument.getElementById('waiting-element-id');
+        if (waitingElement) {
+          waitingElement.style.display = 'none';
+        }
+
+        var streamlitElement = iframeDocument.querySelector('.streamlit-element-class');
+        if (streamlitElement) {
+          streamlitElement.style.display = 'none';
+        }
+      }
+    </script>
   </body>
 </html>
