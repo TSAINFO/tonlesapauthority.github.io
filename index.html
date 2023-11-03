@@ -62,11 +62,28 @@
         right: 0;
         bottom: 0;
       }
+      /* Create a mask to hide specific areas */
+      .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px; /* Adjust the height to cover the top area you want to hide */
+        background-color: white; /* You can set the background color to match the iframe's background */
+      }
+      /* Alternatively, create a mask to hide the bottom area */
+      .bottom-mask {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px; /* Adjust the height to cover the bottom area you want to hide */
+        background-color: white; /* You can set the background color to match the iframe's background */
+      }
     </style>
   </head>
   <body>
     <iframe
-      id="embedded-website"
       src="https://tonlesapinfo.streamlit.app/~/+/"
       frameborder="0"
       marginheight="0"
@@ -76,24 +93,9 @@
       scrolling="auto"
     >
     </iframe>
-
-    <script>
-      window.onload = function() {
-        // Access the iframe content
-        var iframe = document.getElementById('embedded-website');
-        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-        
-        // Find and hide elements with specific IDs or classes
-        var waitingElement = iframeDocument.getElementById('waiting-element-id');
-        if (waitingElement) {
-          waitingElement.style.display = 'none';
-        }
-
-        var streamlitElement = iframeDocument.querySelector('.streamlit-element-class');
-        if (streamlitElement) {
-          streamlitElement.style.display = 'none';
-        }
-      }
-    </script>
+    <!-- Add the mask to hide the top area -->
+    <div class="mask"></div>
+    <!-- Or, add the mask to hide the bottom area -->
+    <!-- <div class="bottom-mask"></div> -->
   </body>
 </html>
